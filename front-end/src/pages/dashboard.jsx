@@ -177,10 +177,10 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col justify-start m-3 gap-2">
-      <div>
+      <div >
         <button
           type="button"
-          className="text-white bg-[#3173f5] hover:bg-blue-800 font-medium rounded-lg text-sm px-5 w-[200px] py-2.5 "
+          className="text-white bg-[#3173f5] hover:bg-blue-800 font-medium rounded-lg text-sm px-5 w-full md:w-[200px] py-2.5 "
           onClick={openAddTaskModal}
         >
           Add Task
