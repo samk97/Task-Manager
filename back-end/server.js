@@ -1,14 +1,17 @@
 const express = require('express');
+const connectDB = require('./config/db');
+const bodyParser = require('body-parser');
+require('dotenv').config();
+
 const app = express();
-const PORT = process.env.PORT || 4000;
+app.use(bodyParser.json());
 
-app.use(express.json()); // Parse JSON bodies
+// Connect to MongoDB
+connectDB();
 
-// Import routes
-const indexRoutes = require('./routes/index');
-app.use('/', indexRoutes);
+// Routes
+app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/tasks', require('./routes/taskRoutes'));
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
